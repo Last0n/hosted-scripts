@@ -29,15 +29,6 @@ function _install() {
         exit 1
     }
 
-    # checkout latest tag
-    echo "Checking out the latest release"
-    git fetch --tags >> "$log" 2>&1
-    latestTag=$(git describe --tags $(git rev-list --tags --max-count=1))
-    git checkout $latestTag >> "$log" 2>&1 || {
-        echo "Failed to checkout latest tag. Exiting..."
-        exit 1
-    }
-
     cd "$HOME/scripts/ngPost/src" || {
         echo "failed to cd to $HOME/scripts/ngPost/src"
         exit 1
