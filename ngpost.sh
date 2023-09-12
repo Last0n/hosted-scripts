@@ -19,7 +19,7 @@ function _install() {
 
     # Clone the repo
     echo "Cloning the ngPost repo"
-    git clone "https://github.com/mbruel/ngPost.git" >> "$log" 2>&1 || {
+    git clone "https://github.com/Last0n/ngPost.git" >> "$log" 2>&1 || {
         echo "Failed to clone repo. Exiting."
         exit 1
     }
