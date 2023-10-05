@@ -33,7 +33,7 @@ function _install() {
 
     # Extract
     echo "Extracting Prowlarr"
-    tar xfv "/tmp/prowlarr.tar.gz" --directory $HOME/ >> "$log" 2>&1 || {
+    tar xfv "/tmp/prowlarr.tar.gz" --directory $HOME/Apps/ >> "$log" 2>&1 || {
         echo_error "Failed to extract"
         exit 1
     }
@@ -52,7 +52,7 @@ After=syslog.target network.target
 
 [Service]
 Type=simple
-ExecStart=$HOME/Prowlarr/Prowlarr -nobrowser -data=$HOME/.config/prowlarr/
+ExecStart=$HOME/Apps/Prowlarr/Prowlarr -nobrowser -data=$HOME/.config/prowlarr/
 TimeoutStopSec=20
 KillMode=process
 Restart=on-failure
@@ -106,7 +106,7 @@ PROWLARR
 function _remove() {
     systemctl disable --now --user prowlarr
     rm -rf "$HOME/.config/prowlarr/"
-    rm -rf "$HOME/Prowlarr/"
+    rm -rf "$HOME/Apps/Prowlarr/"
     echo "Prowlarr has been removed."
 }
 
