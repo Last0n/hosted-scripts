@@ -33,7 +33,7 @@ function _install() {
 
     # Extract
     echo "Extracting Sonarr"
-    tar xfv "/tmp/sonarr.tar.gz" --directory $HOME/ >> "$log" 2>&1 || {
+    tar xfv "/tmp/sonarr.tar.gz" --directory $HOME/apps/ >> "$log" 2>&1 || {
         echo_error "Failed to extract"
         exit 1
     }
@@ -52,7 +52,7 @@ After=syslog.target network.target
 
 [Service]
 Type=simple
-ExecStart=$HOME/Sonarr/Sonarr -nobrowser -data=$HOME/.config/sonarr/
+ExecStart=$HOME/apps/Sonarr/Sonarr -nobrowser -data=$HOME/.config/sonarr/
 TimeoutStopSec=20
 KillMode=process
 Restart=on-failure
@@ -106,7 +106,7 @@ SONARR
 function _remove() {
     systemctl disable --now --user sonarr
     rm -rf "$HOME/.config/sonarr/"
-    rm -rf "$HOME/Sonarr/"
+    rm -rf "$HOME/apps/Sonarr/"
     echo "Sonarr has been removed."
 }
 
